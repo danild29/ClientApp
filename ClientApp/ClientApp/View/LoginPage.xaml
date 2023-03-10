@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ClientApp.ViewModel"
+             x:Class="ClientApp.View.LoginPage"
+             Title="Welcome" BackgroundColor="Aqua">
+
+    <ContentPage.BindingContext>
+        <vm:LoginViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Nochnoy Dozor!" HorizontalOptions="CenterAndExpand" FontSize="Title" Margin="0,30,0,0"/>
+
+            <Entry x:Name="userNameEntry" Text="{Binding UserName}" Placeholder="Имя пользователя" Margin="0,10,0,0" ReturnType="Next">
+            </Entry>
+
+            <Entry x:Name="userPasswordEntry" IsPassword="True" Text="{Binding UserPassword}" Placeholder="Пароль пользователя" Margin="0,10,0,0">
+            </Entry>
+
+            <Label x:Name="loginMessageLabel" Text="{Binding LoginMessage, Mode=OneWay}" 
+                   IsVisible="{Binding TurnLoginMessage, Mode=OneWay}" Margin="0,10,0,0">
+            </Label>
+
+
+            <Button x:Name="loginButton" Text="Войти" HorizontalOptions="Center" 
+                    Margin="0,10,0,0" TextColor="Black" BackgroundColor="Red" Command="{Binding cmdLogin}"></Button>
+
+            <Button x:Name="createAccountButton" Text="создать аккаутн" HorizontalOptions="Center" 
+                    Margin="0,10,0,0" TextColor="Black" BackgroundColor="Red" Command="{Binding cmdCreateAccount}"></Button>
+
+            <Label Text="забыли пароль" HorizontalOptions="Center" TextColor="Blue">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding cmdForgotPassword}"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
