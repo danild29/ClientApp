@@ -4,10 +4,10 @@
              xmlns:vm="clr-namespace:ClientApp.ViewModel"
              x:Class="ClientApp.View.CreateAccountPage"
              Title="CreateAccountPage"  BackgroundColor="#112b47">
+    
     <ContentPage.BindingContext>
         <vm:CreateAccountViewModel/>
     </ContentPage.BindingContext>
-
 
     <ContentPage.Content>
 

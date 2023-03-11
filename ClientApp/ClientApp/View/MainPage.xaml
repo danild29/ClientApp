@@ -3,10 +3,11 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:local="clr-namespace:ClientApp.View"
             x:Class="ClientApp.View.MainPage"
-            Title="Main Page">
+            Title="Main Page"
+            NavigationPage.HasNavigationBar="false">
 
     <FlyoutPage.Flyout>
-        <local:FlyoutMainPage/>
+        <local:FlyoutMainPage x:Name="flyout"/>
     </FlyoutPage.Flyout>
 
 
@@ -15,8 +16,6 @@
             <x:Arguments>
                 <local:HomePage/>
             </x:Arguments>
-            
         </NavigationPage>
-        
     </FlyoutPage.Detail>
 </FlyoutPage>

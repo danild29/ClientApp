@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:ClientApp.ViewModel"
              x:Class="ClientApp.View.LoginPage"
-             Title="Welcome" BackgroundColor="#112b47">
+             Title="Welcome" BackgroundColor="#112b47"
+             NavigationPage.HasNavigationBar="false">
 
     <ContentPage.BindingContext>
         <vm:LoginViewModel/>

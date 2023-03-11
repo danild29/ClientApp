@@ -5,13 +5,17 @@
              xmlns:v="clr-namespace:ClientApp.View"
              Title="FlyoutMenuPage"
              x:Class="ClientApp.View.FlyoutMainPage">
+
     <StackLayout>
-        <ListView>
+        <ListView x:Name="listView" x:FieldModifier="public">
+            
             <ListView.ItemsSource>
                 <x:Array Type="{x:Type m:FlyoutItemPage}">
+                    
+                    
                     <m:FlyoutItemPage Title="Home" IconSource="homeIcon.png" TagetPage="{x:Type v:HomePage}"/>
-                    <m:FlyoutItemPage Title="LoginPage" IconSource="homeIcon.png" TagetPage="{x:Type v:CreateAccountPage}"/>
-                    <m:FlyoutItemPage Title="CreateAccountPage" IconSource="homeIcon.png" TagetPage="{x:Type v:ForgotPasswordPage}"/>
+                    <m:FlyoutItemPage Title="LoginPage" IconSource="homeIcon.png" TagetPage="{x:Type v:LoginPage}"/>
+                    <m:FlyoutItemPage Title="CreateAccountPage" IconSource="homeIcon.png" TagetPage="{x:Type v:CreateAccountPage}"/>
         
                 
                 </x:Array>
@@ -19,9 +23,7 @@
 
             <ListView.ItemTemplate>
                 <DataTemplate>
-
                     <ViewCell>
-
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="33"/>
@@ -29,12 +31,14 @@
                             </Grid.ColumnDefinitions>
 
                             <Image Source="{Binding IconSource}"/>
-                            <Label Grid.Column="1" Text="{Binding Title}"/>
+                            <Label Grid.Column="1" Text="{Binding Title}"
+                                   VerticalOptions="Center"/>
+
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
-                
             </ListView.ItemTemplate>
+
         </ListView>
     </StackLayout>
 </ContentPage>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClientApp.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,19 @@ namespace ClientApp.View
         public MainPage()
         {
             InitializeComponent();
+            flyout.listView.ItemSelected += OnSelectedItem;
+        }
+
+        private void OnSelectedItem(object sender, SelectedItemChangedEventArgs e)
+        {
+            var item = e.SelectedItem as FlyoutItemPage;
+
+            if (item != null)
+            {
+                Detail = new NavigationPage((Page)Activator.CreateInstance(item.TagetPage));
+                flyout.listView.SelectedItem = null;
+                IsPresented = false;
+            }
         }
     }
 }
