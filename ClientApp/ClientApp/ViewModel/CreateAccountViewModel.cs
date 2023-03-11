@@ -1,53 +1,48 @@
-﻿using ClientApp.Services;
+﻿using ClientApp.Model;
+using ClientApp.Services;
 using ClientApp.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
-using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace ClientApp.ViewModel
 {
-    public class LoginViewModel : BaseViewModel
+    public class CreateAccountViewModel: BaseViewModel
     {
-        
         ILogin ilog = DependencyService.Get<ILogin>();
 
-        public Command cmdLogin { get; set; }
-        public Command cmdCreateAccount { get; set; }
-        public Command cmdForgotPassword { get; set; }
+        public Command cmdRegister { get; set; }
 
-        public LoginViewModel()
+        public CreateAccountViewModel()
         {
-            cmdLogin = new Command(GoToMainPage);
-            cmdCreateAccount = new Command(GoToCreateAccount);
-            cmdForgotPassword = new Command(GoToForgotPasswordPage);
+            cmdRegister = new Command(RegisterNewUser);
         }
 
-        private void GoToMainPage(object obj)
+        private void RegisterNewUser()
         {
-            if (ilog.Login(UserName, UserPassword))
+            User user = new User(UserName, UserPassword);
+
+            if (ilog.AddUser(user))
             {
-                App.Current.MainPage.Navigation.PushAsync(new MainPage());
+                GoToMainPage();
             }
             else
             {
-                LoginMessage = "непраильный имя пользователя или пароль";
+                LoginMessage = "такой пользователь уже зарегестирован";
                 TurnLoginMessage = true;
             }
         }
 
-        private void GoToCreateAccount(object obj)
+        private void GoToMainPage()
         {
-            App.Current.MainPage.Navigation.PushAsync(new CreateAccountPage());
-        }
-        private void GoToForgotPasswordPage(object obj)
-        {
-            App.Current.MainPage.Navigation.PushAsync(new ForgotPasswordPage());
+            App.Current.MainPage.Navigation.PushAsync(new MainPage());
         }
 
-        //--------------------------
+        // ========================================
+        
+
         private string userName;
         private string userPassword;
 

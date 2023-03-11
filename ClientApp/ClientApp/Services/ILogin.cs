@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClientApp.Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,6 +9,7 @@ namespace ClientApp.Services
     {
 
         bool Login(string username, string password);
+        bool AddUser(User user);
 
     }
 }

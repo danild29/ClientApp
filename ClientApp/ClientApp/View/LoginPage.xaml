@@ -3,20 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:ClientApp.ViewModel"
              x:Class="ClientApp.View.LoginPage"
-             Title="Welcome" BackgroundColor="Aqua">
+             Title="Welcome" BackgroundColor="#112b47">
 
     <ContentPage.BindingContext>
         <vm:LoginViewModel/>
     </ContentPage.BindingContext>
     
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Padding="40" HorizontalOptions="FillAndExpand" >
             <Label Text="Nochnoy Dozor!" HorizontalOptions="CenterAndExpand" FontSize="Title" Margin="0,30,0,0"/>
 
-            <Entry x:Name="userNameEntry" Text="{Binding UserName}" Placeholder="Имя пользователя" Margin="0,10,0,0" ReturnType="Next">
+            <Image Source="logo.png" WidthRequest="110" HeightRequest="110"></Image>
+
+            <Entry x:Name="userNameEntry" Text="{Binding UserName}" 
+                   Placeholder="Имя пользователя" Margin="0,10,0,0" ReturnType="Next"
+                   TextColor="White" PlaceholderColor="Gray">
             </Entry>
 
-            <Entry x:Name="userPasswordEntry" IsPassword="True" Text="{Binding UserPassword}" Placeholder="Пароль пользователя" Margin="0,10,0,0">
+            <Entry x:Name="userPasswordEntry" IsPassword="True" 
+                   Text="{Binding UserPassword}" Placeholder="Пароль" Margin="0,10,0,0"
+                   TextColor="White" PlaceholderColor="Gray">
             </Entry>
 
             <Label x:Name="loginMessageLabel" Text="{Binding LoginMessage, Mode=OneWay}" 
@@ -24,13 +30,33 @@
             </Label>
 
 
-            <Button x:Name="loginButton" Text="Войти" HorizontalOptions="Center" 
-                    Margin="0,10,0,0" TextColor="Black" BackgroundColor="Red" Command="{Binding cmdLogin}"></Button>
+            <Button x:Name="loginButton"
+                    VerticalOptions="Center"
+                    Margin ="0, 30, 0, 0"
+                    Text="Войти"
+                    TextColor="White"
+                    BackgroundColor="Transparent"
+                    BorderColor="ForestGreen"
+                    BorderWidth="1.5"
+                    CornerRadius="50"
+                    Command="{Binding cmdLogin}"></Button>
 
-            <Button x:Name="createAccountButton" Text="создать аккаутн" HorizontalOptions="Center" 
-                    Margin="0,10,0,0" TextColor="Black" BackgroundColor="Red" Command="{Binding cmdCreateAccount}"></Button>
 
-            <Label Text="забыли пароль" HorizontalOptions="Center" TextColor="Blue">
+            <Label HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Нету аккаунта?" TextColor="Gray"/>
+                        <Span Text="Создать" TextColor="Gray" FontAttributes="Bold" TextDecorations="Underline"/>
+                    </FormattedString>
+                </Label.FormattedText>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding cmdCreateAccount}"/>
+                </Label.GestureRecognizers>
+            </Label>
+
+            
+            <!-- ================================================== -->
+            <Label Text="забыли пароль" HorizontalOptions="Center" TextColor="Gray">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding cmdForgotPassword}"/>
                 </Label.GestureRecognizers>

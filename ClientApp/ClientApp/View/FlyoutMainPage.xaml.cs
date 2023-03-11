@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace ClientApp.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainPage : FlyoutPage
+    public partial class FlyoutMainPage : ContentPage
     {
-        public MainPage()
+        public FlyoutMainPage()
         {
             InitializeComponent();
         }
