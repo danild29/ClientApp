@@ -1,16 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ClientApp.View.HomePage"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="ClientApp.View.HomePage"
             BarBackgroundColor="Black"
             SelectedTabColor="Red"
             UnselectedTabColor="White"
             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
-            android:TabbedPage.ToolbarPlacement="Bottom">
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            xmlns:v="clr-namespace:ClientApp.View">
 
-    <ContentPage Title="A" IconImageSource="homeIcon.png">
-        <Label Text="this is A page"/>
-    </ContentPage>
+    <v:AllEventsPage Title="All Events" IconImageSource="homeIcon.png"/>
 
     <ContentPage Title="B" IconImageSource="homeIcon.png">
         <Label Text="this is Another page B to be"/>

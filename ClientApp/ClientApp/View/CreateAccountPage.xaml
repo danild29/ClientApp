@@ -15,7 +15,7 @@
 
             <Image Margin="0, 40, 0 ,50"  Source="logo.png" WidthRequest="110" HeightRequest="110"></Image>
 
-            <Entry Text="{Binding UserName}" Placeholder="Логин" 
+            <Entry Text="{Binding UserName}" Placeholder="Логин" ReturnType="Next"
                    TextColor="White" PlaceholderColor="Gray"></Entry>
 
             <Entry Text="{Binding UserPassword}" Placeholder="Пароль" 
