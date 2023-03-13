@@ -6,13 +6,19 @@
              x:Class="ClientApp.View.AllEventsPage">
 
     
+    <ContentPage.BindingContext>
+        <vm:AllEventsViewModel/>
+    </ContentPage.BindingContext>
+    
+    
+    
     <ContentPage.Content>
 
         <StackLayout>
 
             <SearchBar Placeholder="имя события" TextChanged="SearchBar_TextChanged" TextColor="Wheat" BackgroundColor="Green"/>
 
-            <ListView x:Name="myListEvents" SeparatorColor="Red"  x:FieldModifier="public" ItemTapped="OnEventTapped" RowHeight="150">
+            <ListView x:Name="myListEvents"  SeparatorColor="Red"  x:FieldModifier="public" ItemTapped="OnEventTapped" RowHeight="150">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell >
@@ -54,8 +60,8 @@
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-            
             </ListView>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

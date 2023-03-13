@@ -11,18 +11,23 @@ namespace ClientApp.ViewModel
     class AllEventsViewModel: BaseViewModel
     {
 
-        public ObservableCollection<EventModel> eventList = new ObservableCollection<EventModel>
-        {
-            new EventModel("First", "description", "https://avatars.mds.yandex.net/i?id=0bd48196c8a84bedbb1aa839e70cf91916235a61-7570837-images-thumbs&n=13"),
-            new EventModel("Second", "monkey", "https://avatars.mds.yandex.net/i?id=0bd48196c8a84bedbb1aa839e70cf91916235a61-7570837-images-thumbs&n=13"),
-            new EventModel("Third", "freezer", "https://avatars.mds.yandex.net/i?id=0bd48196c8a84bedbb1aa839e70cf91916235a61-7570837-images-thumbs&n=13"),
-        };
+        /*public ObservableCollection<EventModel> eventList;
 
 
         public Command cmdOnEventTapped { get; set; }
 
         public AllEventsViewModel()
         {
+
+            eventList = new ObservableCollection<EventModel>
+            {
+                new EventModel("First", "description", "https://avatars.mds.yandex.net/i?id=0bd48196c8a84bedbb1aa839e70cf91916235a61-7570837-images-thumbs&n=13"),
+                new EventModel("Second", "monkey", "https://avatars.mds.yandex.net/i?id=0bd48196c8a84bedbb1aa839e70cf91916235a61-7570837-images-thumbs&n=13"),
+                new EventModel("Third", "freezer", "https://avatars.mds.yandex.net/i?id=0bd48196c8a84bedbb1aa839e70cf91916235a61-7570837-images-thumbs&n=13"),
+            };
+
+            OnPropertyChanged(nameof(eventList));
+
             cmdOnEventTapped = new Command(EventTapped);
         }
 
@@ -30,6 +35,6 @@ namespace ClientApp.ViewModel
         {
             
 
-        }
+        }*/
     }
 }

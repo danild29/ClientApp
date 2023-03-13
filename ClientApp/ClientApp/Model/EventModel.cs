@@ -9,11 +9,14 @@ namespace ClientApp.Model
     public class EventModel
     {
         public int IdEvent { get; set; }
+     
+        public User Creator { get; set; }
         public string NameEvent { get; set; }
         public string DescriptionEvent { get; set; }
         public DateTime DateEvent { get; set; }
-        public string Status { get; set; }
+        public string Status { get; set; } 
         public string ImageUrl { get; set; }
+
 
         private List<Team> Teams;
 
