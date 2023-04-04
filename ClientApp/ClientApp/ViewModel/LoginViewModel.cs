@@ -1,4 +1,5 @@
-﻿using ClientApp.Services;
+﻿using ClientApp.Model;
+using ClientApp.Services;
 using ClientApp.View;
 using System;
 using System.Collections.Generic;
@@ -27,15 +28,26 @@ namespace ClientApp.ViewModel
 
         private void GoToMainPage(object obj)
         {
-            if (ilog.Login(UserName, UserPassword))
+            User user = ilog.Login(UserLoginName, UserPassword);
+            if(user != null)
             {
-                App.Current.MainPage.Navigation.PushAsync(new MainPage());
+                ilog.UserData = user;
+                GoToHomePage();
             }
             else
             {
                 LoginMessage = "непраильный имя пользователя или пароль";
+                //Toast.MakeText(Application.Context, message, ToastLength.Long).Show();
+                App.Current.MainPage.DisplayAlert("Ошибочка", "неправильный имя пользователя или пароль", "OK"); 
                 TurnLoginMessage = true;
             }
+        }
+        private void GoToHomePage()
+        {
+            var homePage = new HomePage();
+
+            App.Current.MainPage = new NavigationPage(homePage);
+            //App.Current.MainPage.Navigation.PushAsync(homePage);
         }
 
         private void GoToCreateAccount(object obj)
@@ -48,16 +60,16 @@ namespace ClientApp.ViewModel
         }
 
         //--------------------------
-        private string userName;
+        private string userLoginName;
         private string userPassword;
 
-        public string UserName
+        public string UserLoginName
         {
-            get => userName;
+            get => userLoginName;
             set
             {
-                userName = value;
-                OnPropertyChanged(nameof(UserName));
+                userLoginName = value;
+                OnPropertyChanged(nameof(UserLoginName));
             }
         }
         public string UserPassword

@@ -46,9 +46,21 @@ namespace ClientApp.View
 			}
         }
 
-        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        private void TextChangedOnSearchBar(object sender, TextChangedEventArgs e)
         {
+            myListEvents.ItemsSource = EventList.Where(s => s.Name.StartsWith(e.NewTextValue));
+        }
 
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            var image = "https://avatars.mds.yandex.net/i?id=0bd48196c8a84bedbb1aa839e70cf91916235a61-7570837-images-thumbs&n=13";
+            EventList.Add(new EventModel("catacomby", "this is quest with some real shit", image));
+        }
+
+        private void Button_Clicked_1(object sender, EventArgs e)
+        {
+            if (EventList.Count > 1)
+                EventList.RemoveAt(1);
         }
     }
 }

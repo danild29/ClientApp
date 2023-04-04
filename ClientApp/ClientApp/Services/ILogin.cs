@@ -8,11 +8,17 @@ namespace ClientApp.Services
 {
     public interface ILogin
     {
+        User UserData { get; set; }
+        Team MyTeam { get; set; }
 
-        bool Login(string username, string password);
+        User Login(string username, string password);
         bool AddUser(User user);
+        void GetMyTeam();
 
-        ObservableCollection<EventModel> GetAllEvents();
+
+		ObservableCollection<EventModel> GetAllEvents();
+
+        User GetUserById(int id);
 
     }
 }

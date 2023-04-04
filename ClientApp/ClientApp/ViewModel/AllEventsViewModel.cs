@@ -10,6 +10,7 @@ namespace ClientApp.ViewModel
 {
     class AllEventsViewModel: BaseViewModel
     {
+        // крч класс вроде не нужен, все описано в code behind 
 
         /*public ObservableCollection<EventModel> eventList;
 

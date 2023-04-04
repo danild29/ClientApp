@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ClientApp.ViewModel"
+             x:Class="ClientApp.View.ProfilePage">
+
+    <ContentPage.BindingContext>
+        <vm:ProfileViewModel/>
+    </ContentPage.BindingContext>
+
+
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Vertical">
+                <Image Source="logo.png"/>
+                <StackLayout>
+                    <Label Text="имя " FontSize="Body"/>
+                    <Label Text="{Binding Name}" FontSize="Body"/>
+                </StackLayout>
+            </StackLayout>
+
+            <Label Margin="20" Text="насторйки" FontSize="Body"/>
+            <Label Margin="20" Text="о программе" FontSize="Body"/>
+            <Button Margin="20" Text="ВЫЙТИ" FontSize="Body" Command="{Binding cmdLogOut}"/>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+    
+</ContentPage>
+
+
+

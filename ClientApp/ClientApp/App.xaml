@@ -4,5 +4,38 @@
              x:Class="ClientApp.App">
     <Application.Resources>
 
+        <!--
+        
+        <Color x:Key="mycolor">Red</Color>
+        
+        -->
+        
+        
+        <Style x:Key="EntryUserInfo" TargetType="Entry">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="ReturnType" Value="Next"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="PlaceholderColor" Value="Gray"/>
+            <Setter Property="Margin" Value="0,10,0,0"/>
+        </Style>
+        
+        
+        <Style x:Key="ButtonDone" TargetType="Button">
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="WidthRequest" Value="200"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="Margin" Value="0,50,0,0"/>
+            <Setter Property="TextColor" Value="#D9D9D9"/>
+            <Setter Property="BackgroundColor" Value="#02040F"/>
+            <Setter Property="BorderWidth" Value="1.5"/>
+            <Setter Property="TextTransform" Value="None"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="FontSize" Value="19"/>
+            <Setter Property="CornerRadius" Value="50"/>
+        </Style>
+
+                   
+
     </Application.Resources>
 </Application>

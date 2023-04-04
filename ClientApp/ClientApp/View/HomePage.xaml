@@ -7,12 +7,19 @@
             UnselectedTabColor="White"
             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
             android:TabbedPage.ToolbarPlacement="Bottom"
-            xmlns:v="clr-namespace:ClientApp.View">
+            xmlns:v="clr-namespace:ClientApp.View"
+            xmlns:vm="clr-namespace:ClientApp.ViewModel"
+            NavigationPage.HasNavigationBar="false">
 
-    <v:AllEventsPage Title="All Events" IconImageSource="homeIcon.png"/>
 
-    <ContentPage Title="B" IconImageSource="homeIcon.png">
-        <Label Text="this is Another page B to be"/>
-    </ContentPage>
+    <!--
+    <v:MyTeamPage Title="моя команда" IconImageSource="homeIcon.png"/>
+
+    <v:AllEventsPage Title="все мероприятия" IconImageSource="homeIcon.png"/>
+
+    <v:MyEventsPage Title="мои мероприятия" IconImageSource="homeIcon.png"/>
+
+    <v:ProfilePage Title="профиль" IconImageSource="homeIcon.png"/>
+    -->
 
 </TabbedPage>

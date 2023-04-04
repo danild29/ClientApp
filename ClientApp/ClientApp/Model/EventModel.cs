@@ -8,27 +8,27 @@ namespace ClientApp.Model
 {
     public class EventModel
     {
-        public int IdEvent { get; set; }
-     
-        public User Creator { get; set; }
-        public string NameEvent { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
         public string DescriptionEvent { get; set; }
         public DateTime DateEvent { get; set; }
         public string Status { get; set; } 
         public string ImageUrl { get; set; }
+     
 
+        public User Creator { get; set; }
 
-        private List<Team> Teams;
+        public List<Team> Teams;
 
 
         public EventModel(string nameEvent, string descriptionEvent)
         {
-            NameEvent = nameEvent;
+            Name = nameEvent;
             DescriptionEvent = descriptionEvent;
         }
         public EventModel(string name, string description, string url)
         {
-            NameEvent = name;
+            Name = name;
             DescriptionEvent = description;
             ImageUrl = url;
         }

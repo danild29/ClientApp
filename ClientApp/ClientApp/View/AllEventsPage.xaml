@@ -5,18 +5,22 @@
              xmlns:vm="clr-namespace:ClientApp.ViewModel"
              x:Class="ClientApp.View.AllEventsPage">
 
-    
     <ContentPage.BindingContext>
         <vm:AllEventsViewModel/>
     </ContentPage.BindingContext>
     
-    
-    
+        
     <ContentPage.Content>
 
         <StackLayout>
 
-            <SearchBar Placeholder="имя события" TextChanged="SearchBar_TextChanged" TextColor="Wheat" BackgroundColor="Green"/>
+            <StackLayout>
+                <Label Text="тут все мерпориятия которые врообще есть" Padding="30"/>
+                <Button Clicked="Button_Clicked" Text="add but"/>
+                <Button Clicked="Button_Clicked_1" Text="rem but"/>
+            </StackLayout>
+            
+            <SearchBar Placeholder="имя события" TextChanged="TextChangedOnSearchBar" TextColor="Wheat" BackgroundColor="Green"/>
 
             <ListView x:Name="myListEvents"  SeparatorColor="Red"  x:FieldModifier="public" ItemTapped="OnEventTapped" RowHeight="150">
                 <ListView.ItemTemplate>

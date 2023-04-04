@@ -1,37 +1,45 @@
 ﻿using ClientApp.Model;
+using ClientApp.View;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms;
 
 namespace ClientApp.ViewModel
 {
     /// <summary>
-    /// надо испрваить костыль с биндингом ивента
+    /// надо испрваить костыль с биндингом ивента или добавить полную инфу. КРЧ ПЕРЕДЕЛАТЬ
     /// </summary>
     public class EventViewModel
     {
-
-
-
-        
         private EventModel currentEvent;
-        public int IdEvent { get; set; }
-
-        public string NameEvent { get; set; }
-        public string DescriptionEvent { get; set; }
+        
+        
+        public string Name => currentEvent.Name;
+        public string Description => currentEvent.DescriptionEvent;
+        public string Image => currentEvent.ImageUrl;
+        public int IdEvent => currentEvent.Id;
+        
+        
+        public User Creator { get; set; }
         public DateTime DateEvent { get; set; }
-        public string ImageUrl { get; set; }
+        public string Status { get; set; }
+        private List<Team> Teams;
+
+
+        public Command cmdJoin { get; set; }
 
         public EventViewModel(EventModel e)
         {
             currentEvent = e;
-            IdEvent= e.IdEvent;
-            NameEvent = e.NameEvent;
-            DescriptionEvent = e.DescriptionEvent;
-            ImageUrl = e.ImageUrl;
-            DateEvent = e.DateEvent;
+            cmdJoin = new Command(JoinEvent);
         }
 
-
+        private void JoinEvent(object obj)
+        {
+            var homePage = new HomePage();
+            App.Current.MainPage = new NavigationPage(homePage);
+            //App.Current.MainPage.Navigation.PushAsync(homePage);
+        }
     }
 }

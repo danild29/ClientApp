@@ -1,13 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ClientApp.View.EventPage">
+             x:Class="ClientApp.View.EventPage"
+             NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
-        <StackLayout>
-            <Image Source="{Binding ImageUrl}"/>
+        <StackLayout Padding="10">
+            <Image Source="{Binding Image}"/>
             <Label Text="{Binding IdEvent}" />
-            <Label Text="{Binding NameEvent}" />
-            <Label Text="{Binding DescriptionEvent}" />
+            <Label Text="{Binding Name}" />
+            <Label Text="{Binding Description}" />
+
+
+            <Button Text="зарегаться" Command="{Binding cmdJoin}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

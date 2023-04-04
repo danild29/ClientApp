@@ -13,6 +13,7 @@ namespace ClientApp.ViewModel
     {
         ILogin ilog = DependencyService.Get<ILogin>();
 
+
         public Command cmdRegister { get; set; }
 
         public CreateAccountViewModel()
@@ -22,10 +23,11 @@ namespace ClientApp.ViewModel
 
         private void RegisterNewUser()
         {
-            User user = new User(UserName, UserPassword);
+            User user = new User(UserLoginName, UserPassword, UserNickName);
 
             if (ilog.AddUser(user))
             {
+                ilog.UserData = user;
                 GoToMainPage();
             }
             else
@@ -37,22 +39,26 @@ namespace ClientApp.ViewModel
 
         private void GoToMainPage()
         {
-            App.Current.MainPage.Navigation.PushAsync(new MainPage());
+            var homePage = new HomePage();
+
+            App.Current.MainPage = new NavigationPage(homePage);
+            //App.Current.MainPage.Navigation.PushAsync(homePage);
         }
 
         // ========================================
         
 
-        private string userName;
+        private string userLoginName;
         private string userPassword;
+        private string userNickName;
 
-        public string UserName
+        public string UserLoginName
         {
-            get => userName;
+            get => userLoginName;
             set
             {
-                userName = value;
-                OnPropertyChanged(nameof(UserName));
+                userLoginName = value;
+                OnPropertyChanged(nameof(UserLoginName));
             }
         }
         public string UserPassword
@@ -64,6 +70,20 @@ namespace ClientApp.ViewModel
                 OnPropertyChanged(nameof(UserPassword));
             }
         }
+        public string UserNickName
+        {
+            get => userNickName;
+            set
+            {
+                userNickName = value;
+                OnPropertyChanged(nameof(UserNickName));
+            }
+        }
+
+
+
+
+
 
         private string loginMessage;
 
