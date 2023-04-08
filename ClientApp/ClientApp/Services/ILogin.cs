@@ -14,11 +14,13 @@ namespace ClientApp.Services
         User Login(string username, string password);
         bool AddUser(User user);
         void GetMyTeam();
+        int? CreateTeam(string username, string password);
 
 
 		ObservableCollection<EventModel> GetAllEvents();
 
         User GetUserById(int id);
-
+        Team GetTeamById(string newTeamId, string newTeamPassword);
+        void LeaveMyTeam(int id1, int id2);
     }
 }

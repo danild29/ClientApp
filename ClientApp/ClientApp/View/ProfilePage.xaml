@@ -12,16 +12,17 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout Orientation="Vertical">
-                <Image Source="logo.png"/>
-                <StackLayout>
+                <Image Source="avatarBlackInCircle.png" WidthRequest="300" />
+                <StackLayout Orientation="Horizontal" Padding="30">
                     <Label Text="имя " FontSize="Body"/>
                     <Label Text="{Binding Name}" FontSize="Body"/>
                 </StackLayout>
             </StackLayout>
 
-            <Label Margin="20" Text="насторйки" FontSize="Body"/>
-            <Label Margin="20" Text="о программе" FontSize="Body"/>
-            <Button Margin="20" Text="ВЫЙТИ" FontSize="Body" Command="{Binding cmdLogOut}"/>
+            <Button Margin="20" Text="насторйки" FontSize="Body"  Command="{Binding cmdSetting}"/>
+            <Button Margin="20" Text="о программе" FontSize="Body"  Command="{Binding cmdAboutProgram}" />
+            <Button Margin="20" Text="получить прумиум" FontSize="Body"  Command="{Binding cmdPremium}"/>
+            <Button Margin="20" Text="выйти" FontSize="Body" Command="{Binding cmdLogOut}"/>
 
 
         </StackLayout>

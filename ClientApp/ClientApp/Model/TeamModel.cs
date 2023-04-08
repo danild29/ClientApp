@@ -8,12 +8,11 @@ namespace ClientApp.Model
     {
         public int Id { get; set; }
         public String Name { get; set; }
-
         public string Password { get; set; }
 
         private User Captain;
 
-        private List<User> Players;
+        public List<User> Players;
 
         public Team(string name, string password)
         {
@@ -34,5 +33,7 @@ namespace ClientApp.Model
             }
             Players.Add(player);
         }
-    }
+
+
+	}
 }

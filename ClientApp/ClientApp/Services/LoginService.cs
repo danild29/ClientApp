@@ -14,20 +14,34 @@ namespace ClientApp.Services
         public Team MyTeam { get; set; }
 
         private List<User> userList = new List<User>();
+        private List<Team> teamList = new List<Team>();
+
+        int __teamId = 5;
+
         private ObservableCollection<EventModel> EventList = new ObservableCollection<EventModel>();
 
-        
+
         public LoginService()
         {
 
             MakeUser();
             MakeEvents();
 
-            
+            MakeTeams();
 
+
+		}
+
+
+        public void LeaveMyTeam(int id1, int id2)
+        {
+
+            UserData.TeamId = null;
+            UserData.TeamPassword = null;
+            return;
         }
 
-		public void GetMyTeam()
+        public void GetMyTeam()
         {
             int? id = UserData.TeamId;
             if (id < 0 || id == null) return;
@@ -36,12 +50,30 @@ namespace ClientApp.Services
 
         }
 
+        public int? CreateTeam(string name, string password)
+        {
+            Team createTeam = new Team(name, password);
+            createTeam.AddPlayer(UserData);
+
+            createTeam.Id = __teamId;
+            teamList.Add(createTeam);
+            __teamId++;
+            if (true)  //если получилось создать комманду
+            {
+                return createTeam.Id;
+            }
 
 
-		public bool AddUser(User user)
+            return null;
+        }
+
+
+
+
+        public bool AddUser(User user)
         {
 
-            if(!IsUserExistInDataBase(user.LoginName))
+            if (!IsUserExistInDataBase(user.LoginName))
             {
                 userList.Add(user);
                 return true;
@@ -56,12 +88,12 @@ namespace ClientApp.Services
             return EventList;
         }
 
-		
 
 
-		public User Login(string username, string password)
+
+        public User Login(string username, string password)
         {
-            foreach(var user in userList)
+            foreach (var user in userList)
             {
                 if (user.LoginName == username && user.Password == password)
                 {
@@ -74,24 +106,36 @@ namespace ClientApp.Services
 
         public User GetUserById(int id)
         {
-            foreach(var user in userList)
+            foreach (var user in userList)
             {
                 if (user.Id == id)
                     return user;
             }
             return null;
         }
-
-
-        // ===================================================== temporariy
-        // ===================================================== temporariy
-        // ===================================================== temporariy
-
-        private void MakeUser()
+        public Team GetTeamById(string newTeamId, string newTeamPassword)
         {
-            userList.Add(new User("user1", "123", "zxc"));
-            userList.Add(new User("user2", "qwerty", "zxc"));
-            userList.Add(new User("n", "m", "zxc"));
+            foreach(Team team in teamList)
+            {
+                if (team.Id.ToString() == newTeamId && team.Password == newTeamPassword)
+                {
+                    return team;
+                }
+            }
+
+
+            return null;
+        }
+
+		// ===================================================== temporariy
+		// ===================================================== temporariy
+		// ===================================================== temporariy
+
+		private void MakeUser()
+        {
+            userList.Add(new User("user1", "123", "zxc1"));
+            userList.Add(new User("user2", "qwerty", "zxc2"));
+            userList.Add(new User("n", "m", "zxc3"));
         }
 
         private void MakeEvents()
@@ -125,6 +169,21 @@ namespace ClientApp.Services
             return team;
         }
 
+
+        private void MakeTeams()
+        {
+            for(int i = 0; i < 4; i++)
+            {
+                string name = "com" + i;
+                Team team = new Team(name, i.ToString());
+                team.Id = i;
+                foreach(User user in userList)
+                {
+                    team.AddPlayer(user);
+                }
+                teamList.Add(team);
+            }
+        }
 
         // ===================================================== temporariy
         // ===================================================== temporariy

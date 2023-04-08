@@ -8,17 +8,58 @@
     <ContentPage.Content>
         <StackLayout>
 
-            <StackLayout Orientation="Horizontal">
-                <StackLayout>
+
+
+            <!--   регистрация -->
+            <StackLayout IsVisible="{Binding ShowLogging}" Margin="10,20,10,10">
+                <StackLayout Margin="10, 20,10,10">
+                    <Entry Placeholder="id команды" Text="{Binding NewTeamId} "/>
+                    <Entry Placeholder="пароль команды" Text="{Binding NewTeamPassword}"/>
+                    <Button Text="войти" Clicked="LogNewTeam"/>
+                </StackLayout>
+
+                <StackLayout Margin="10, 220,10,10">
+                    <Label Text="создать команду" FontSize="20"/>
+                    <Entry Placeholder="название команды" Text="{Binding CreateTeamName} "/>
+                    <Entry Placeholder="пароль команды" Text="{Binding CreateTeamPassword}"/>
+                    <Button Text="создать" Clicked="CreateTeam"/>
+                </StackLayout>
+                <Label Text="{Binding ErrorMessage}"/>
+            </StackLayout>
+            
+            
+            
+            
+            <!--   моя команда -->
+            <StackLayout Orientation="Vertical" Margin="10,100, 0,0" IsVisible="{Binding HasTeam}">
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Выйти" Clicked="LeaveTeam"/>
                     <Label Text="{Binding IdTeam}"/>
                     <Label Text="{Binding Name}"/>
                 </StackLayout>
+                
+            
                 <StackLayout>
-                    <Label Text="alexy"/>
-                    <Label Text="lexa"/>
-                    <Label Text="leks"/>
-                    <Label Text="lox"/>
-                    <Label Text="alek"/>
+
+                    <ListView x:Name="myTeamatesList" x:FieldModifier="public"  SeparatorColor="Red"   ItemTapped="myTeamates_ItemTapped">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell >
+
+                                    <Label Text="{Binding NickName}"
+                                        TextColor="Beige"
+                                        FontAttributes="Bold"
+                                           FontSize="10"/>
+
+
+
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+
+                    <Button Text="начать игру" Clicked="StartGame" />
                 </StackLayout>
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Tapped="GoToMyTeam" CommandParameter="." />

@@ -19,10 +19,7 @@ namespace ClientApp.View
             InitializeComponent();
             ILogin ilog = DependencyService.Get<ILogin>();
 
-            if(ilog.MyTeam == null)
-            {
-                ilog.GetMyTeam();
-            }
+            
 
             MyTeamPage myteam = new MyTeamPage { Title = "моя команда", IconImageSource = "homeIcon.png" };
             AllEventsPage allEvents = new AllEventsPage { Title = "все мероприятия", IconImageSource = "homeIcon.png" };

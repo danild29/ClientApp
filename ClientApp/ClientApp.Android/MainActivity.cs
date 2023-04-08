@@ -4,6 +4,7 @@ using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
+using Android.Widget;
 
 namespace ClientApp.Droid
 {
@@ -23,6 +24,25 @@ namespace ClientApp.Droid
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+        long lastPress;
+
+        public override void OnBackPressed()
+        {
+            // source https://stackoverflow.com/a/27124904/3814729
+            long currentTime = DateTime.UtcNow.Ticks / TimeSpan.TicksPerMillisecond;
+
+            // source https://stackoverflow.com/a/14006485/3814729
+            if (currentTime - lastPress > 5000)
+            {
+                Toast.MakeText(this, "Нажмите еще раз чтобы выйти", ToastLength.Long).Show();
+                lastPress = currentTime;
+            }
+            else
+            {
+                base.OnBackPressed();
+            }
         }
     }
 }
